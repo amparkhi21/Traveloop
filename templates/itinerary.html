@@ -46,70 +46,39 @@
                 placeholder="Enter city name"
                 required
             >
-
         </div>
-
-        <!-- Activity Name -->
-
         <div class="mb-3">
-
             <label class="form-label">
-
                 Activity Name
-
             </label>
-
             <input
                 type="text"
                 name="activity_name"
                 class="form-control"
                 placeholder="Example: Beach Visit"
-                required
-            >
-
+                required>
         </div>
-
-        <!-- Cost -->
-
         <div class="mb-3">
-
             <label class="form-label">
-
                 Cost
-
             </label>
-
             <input
                 type="number"
                 name="cost"
                 class="form-control"
                 placeholder="Enter activity cost"
-                required
-            >
-
+                required>
         </div>
-
-        <!-- Submit Button -->
 
         <div class="d-grid">
-
             <button
                 type="submit"
-                class="btn btn-success btn-lg"
-            >
-
+                class="btn btn-success btn-lg">
                 Add Activity
-
             </button>
-
         </div>
-
     </form>
-
 </div>
-
-<!-- Activities Table -->
-
 <div class="card shadow p-4">
 
     <h3 class="mb-4">
@@ -154,7 +123,7 @@
 
             <tr>
 
-                <!-- City -->
+               
 
                 <td>
 
@@ -162,15 +131,12 @@
 
                 </td>
 
-                <!-- Activity Name -->
 
                 <td>
 
                     {{ activity.activity_name }}
 
                 </td>
-
-                <!-- Cost -->
 
                 <td>
 
@@ -187,9 +153,6 @@
     </table>
 
     {% else %}
-
-    <!-- Empty State -->
-
     <div class="alert alert-info">
 
         No activities added yet.
