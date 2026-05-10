@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'traveloopsecret'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///traveloop.db'
 db = SQLAlchemy(app)
 
 login_manager = LoginManager()
@@ -15,7 +15,6 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(100))
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
-
 class Trip(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     trip_name = db.Column(db.String(100))
@@ -23,28 +22,23 @@ class Trip(db.Model):
     end_date = db.Column(db.String(50))
     description = db.Column(db.Text)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
 class Activity(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     city = db.Column(db.String(100))
     activity_name = db.Column(db.String(100))
     cost = db.Column(db.Integer)
     trip_id = db.Column(db.Integer, db.ForeignKey('trip.id'))
-
 class PackingItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     item_name = db.Column(db.String(100))
     packed = db.Column(db.Boolean, default=False)
     trip_id = db.Column(db.Integer, db.ForeignKey('trip.id'))
-
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
-
 @app.route('/')
 def home():
     return redirect(url_for('login'))
-
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
@@ -61,7 +55,6 @@ def signup():
         flash('Account Created Successfully')
         return redirect(url_for('login'))
     return render_template('signup.html')
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -76,7 +69,6 @@ def login():
             return redirect(url_for('dashboard'))
         flash('Invalid Credentials')
     return render_template('login.html')
-
 @app.route('/dashboard')
 @login_required
 def dashboard():
@@ -87,7 +79,6 @@ def dashboard():
         'dashboard.html',
         trips=trips
     )
-
 @app.route('/create_trip', methods=['GET', 'POST'])
 @login_required
 def create_trip():
@@ -108,7 +99,6 @@ def create_trip():
         flash('Trip Created Successfully')
         return redirect(url_for('dashboard'))
     return render_template('create_trip.html')
-
 @app.route('/my_trips')
 @login_required
 def my_trips():
@@ -119,7 +109,6 @@ def my_trips():
         'my_trips.html',
         trips=trips
     )
-
 @app.route('/itinerary/<int:trip_id>', methods=['GET', 'POST'])
 @login_required
 def itinerary(trip_id):
@@ -148,7 +137,6 @@ def itinerary(trip_id):
         activities=activities,
         total_cost=total_cost
     )
-
 @app.route('/packing/<int:trip_id>', methods=['GET', 'POST'])
 @login_required
 def packing(trip_id):
@@ -174,6 +162,4 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
     app.run(debug=True)
