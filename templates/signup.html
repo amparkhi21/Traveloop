@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
+
 {% block content %}
+
 <div class="row justify-content-center">
 
     <div class="col-md-6">
@@ -75,3 +77,36 @@
                         placeholder="Create a password"
                         required
                     >
+                    
+                </div>
+                <div class="d-grid">
+
+                    <button
+                        type="submit"
+                        class="btn btn-success"
+                    >
+
+                        Create Account
+
+                    </button>
+
+                </div>
+
+            </form>
+
+            <p class="text-center mt-4">
+
+                Already have an account?
+
+                <a href="/login">
+
+                    Login Here
+
+                </a>
+
+            </p>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
