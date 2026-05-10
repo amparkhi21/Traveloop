@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'traveloopsecret'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///traveloop.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
 
 login_manager = LoginManager()
