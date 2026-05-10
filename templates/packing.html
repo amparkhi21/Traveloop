@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1>
+            Packing Checklist
+        </h1>
+        <p class="text-muted">
+            Organize your travel essentials easily.
+        </p>
+    </div>
+</div>
+<hr>
+<div class="card shadow p-4 mb-5">
+    <h3 class="mb-4">
+        Add New Item
+    </h3>
+    <form method="POST">
+        <div class="mb-3">
+            <label class="form-label">
+                Item Name
+            </label>
+            <input
+                type="text"
+                name="item_name"
+                class="form-control"
+                placeholder="Example: Passport"
+                required
+            >
+        </div>
+        <div class="d-grid">
+            <button
+                type="submit"
+                class="btn btn-primary btn-lg">
+                Add Item
+            </button>
+        </div>
+    </form>
+</div>
+<div class="card shadow p-4">
+    <h3 class="mb-4">
+        Your Packing Items
+    </h3>
+    {% if items %}
+    <ul class="list-group">
+        {% for item in items %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <!-- Item Name -->
+
+            <span>
+
+                {{ item.item_name }}
+
+            </span>
+
+            <!-- Badge -->
+
+            <span class="badge bg-success">
+
+                Added
+
+            </span>
+
+        </li>
+
+        {% endfor %}
+
+    </ul>
+
+    {% else %}
+
+    <!-- Empty State -->
+
+    <div class="alert alert-info">
+
+        No packing items added yet.
+
+        Add your first travel essential.
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

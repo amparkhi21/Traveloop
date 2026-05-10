@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+        <div class="card shadow p-4">
+
+            <h2 class="text-center mb-4">
+                Login to Traveloop
+            </h2>
+
+            <form method="POST">
+
+                <!-- Email -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        class="form-control"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+                <!-- Password -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        class="form-control"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+                <!-- Login Button -->
+
+                <div class="d-grid">
+
+                    <button type="submit" class="btn btn-primary">
+
+                        Login
+
+                    </button>
+
+                </div>
+
+            </form>
+
+            <!-- Signup Link -->
+
+            <p class="text-center mt-4">
+
+                Don't have an account?
+
+                <a href="/signup">
+
+                    Signup Here
+
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

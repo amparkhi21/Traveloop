@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1>
+            {{ trip.trip_name }}
+        </h1>
+        <p class="text-muted">
+            {{ trip.start_date }}
+            to
+            {{ trip.end_date }}
+        </p>
+    </div>
+    <div class="text-end">
+        <h3 class="text-success">
+            Total Budget
+        </h3>
+        <h2>
+            ₹{{ total_cost }}
+        </h2>
+    </div>
+</div>
+<hr>
+<div class="card shadow p-4 mb-5">
+    <h3 class="mb-4">
+        Add Activity
+
+    </h3>
+
+    <form method="POST">
+
+        <!-- City -->
+
+        <div class="mb-3">
+
+            <label class="form-label">
+
+                City
+
+            </label>
+
+            <input
+                type="text"
+                name="city"
+                class="form-control"
+                placeholder="Enter city name"
+                required
+            >
+
+        </div>
+
+        <!-- Activity Name -->
+
+        <div class="mb-3">
+
+            <label class="form-label">
+
+                Activity Name
+
+            </label>
+
+            <input
+                type="text"
+                name="activity_name"
+                class="form-control"
+                placeholder="Example: Beach Visit"
+                required
+            >
+
+        </div>
+
+        <!-- Cost -->
+
+        <div class="mb-3">
+
+            <label class="form-label">
+
+                Cost
+
+            </label>
+
+            <input
+                type="number"
+                name="cost"
+                class="form-control"
+                placeholder="Enter activity cost"
+                required
+            >
+
+        </div>
+
+        <!-- Submit Button -->
+
+        <div class="d-grid">
+
+            <button
+                type="submit"
+                class="btn btn-success btn-lg"
+            >
+
+                Add Activity
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+<!-- Activities Table -->
+
+<div class="card shadow p-4">
+
+    <h3 class="mb-4">
+
+        Planned Activities
+
+    </h3>
+
+    {% if activities %}
+
+    <table class="table table-bordered table-striped">
+
+        <thead class="table-dark">
+
+            <tr>
+
+                <th>
+
+                    City
+
+                </th>
+
+                <th>
+
+                    Activity
+
+                </th>
+
+                <th>
+
+                    Cost
+
+                </th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for activity in activities %}
+
+            <tr>
+
+                <!-- City -->
+
+                <td>
+
+                    {{ activity.city }}
+
+                </td>
+
+                <!-- Activity Name -->
+
+                <td>
+
+                    {{ activity.activity_name }}
+
+                </td>
+
+                <!-- Cost -->
+
+                <td>
+
+                    ₹{{ activity.cost }}
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    {% else %}
+
+    <!-- Empty State -->
+
+    <div class="alert alert-info">
+
+        No activities added yet.
+
+        Start by adding your first travel activity.
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

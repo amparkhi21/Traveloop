@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow p-4">
+            <h2 class="mb-4 text-center">
+                Create New Trip
+            </h2>
+            <form method="POST">
+                <div class="mb-3">
+
+                    <label class="form-label">
+
+                        Trip Name
+
+                    </label>
+
+                    <input
+                        type="text"
+                        name="trip_name"
+                        class="form-control"
+                        placeholder="Enter trip name"
+                        required
+                    >
+
+                </div>
+
+                <!-- Start Date -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+
+                        Start Date
+
+                    </label>
+
+                    <input
+                        type="date"
+                        name="start_date"
+                        class="form-control"
+                        required
+                    >
+
+                </div>
+
+                <!-- End Date -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+
+                        End Date
+
+                    </label>
+
+                    <input
+                        type="date"
+                        name="end_date"
+                        class="form-control"
+                        required
+                    >
+
+                </div>
+
+                <!-- Description -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+
+                        Trip Description
+
+                    </label>
+
+                    <textarea
+                        name="description"
+                        class="form-control"
+                        rows="4"
+                        placeholder="Write about your trip..."
+                    ></textarea>
+
+                </div>
+
+                <!-- Submit Button -->
+
+                <div class="d-grid">
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-lg"
+                    >
+
+                        Save Trip
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
